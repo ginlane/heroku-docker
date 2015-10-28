@@ -122,7 +122,7 @@ function release(context) {
         }).trim();
         child.execSync(`docker wait ${containerId}`);
         child.execSync(`docker cp ${containerId}:/tmp/slug.tgz ${slugPath}`);
-        child.execSync(`docker rm -f ${containerId}`);
+        child.execSync(`docker rm -f ${containerId} || true`);
         resolve(path.join(slugPath, 'slug.tgz'));
       }
     });
