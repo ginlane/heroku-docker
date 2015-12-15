@@ -121,7 +121,7 @@ function release(context) {
           encoding: 'utf8'
         }).trim();
         child.execSync(`docker wait ${containerId}`);
-        child.execSync(`docker cp ${containerId}:/tmp/slug.tgz ${slugPath}`);
+        child.execSync(`sudo docker cp ${containerId}:/tmp/slug.tgz ${slugPath}`);
         child.execSync(`docker rm -f ${containerId} || true`);
         resolve(path.join(slugPath, 'slug.tgz'));
       }
